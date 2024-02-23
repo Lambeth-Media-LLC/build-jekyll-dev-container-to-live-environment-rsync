@@ -47,6 +47,8 @@ runs:
       with:
         # Change this to point to your image name
         imageName: ${{inputs.registry_image_name}}
+        cacheFrom: ${{inputs.registry_image_name}}
+        push: always
         # Change this to be your CI task/script
         runCmd: |
           bundle
