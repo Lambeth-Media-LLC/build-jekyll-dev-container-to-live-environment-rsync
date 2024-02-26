@@ -1,6 +1,9 @@
 name: 'Build jekyll site from dev container and push to specified environment via rsync' 
 
 inputs:
+  jekyll_env:
+    description: “environment variable to pass to jekyll on build”
+    required: true
   registry_image_name:
     description: “imageName for devcontainer”
     required: true
@@ -52,7 +55,7 @@ runs:
         # Change this to be your CI task/script
         runCmd: |
           bundle
-          jekyll build
+          JEKYLL_ENV=${{inputs.jekyll_env}} jekyll build
 
     - name: Upload to dev environment via rsync
       uses: up9cloud/action-rsync@master
