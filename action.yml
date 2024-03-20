@@ -54,8 +54,7 @@ runs:
         push: always
         # Change this to be your CI task/script
         runCmd: |
-          bundle
-          JEKYLL_ENV=${{inputs.jekyll_env}} jekyll build
+          JEKYLL_ENV=${{inputs.jekyll_env}} bundle exec jekyll build
 
     - name: Upload to dev environment via rsync
       uses: up9cloud/action-rsync@master
